@@ -207,9 +207,18 @@ Set these repository secrets in **Settings > Secrets and variables > Actions**:
 - `SSH_PRIVATE_KEY`: Private SSH key with access to the server
 
 ### How to use
-1. Set up your server with Node.js 20.11.0, pm2, and SSH access.
-2. Add the required secrets to your GitHub repository.
-3. Push to the `main` branch to trigger deployment.
+1. Set up your server with Node.js 22, pm2, and SSH access.
+2. **Install nvm for the deployment user** (required for automatic Node.js version management):
+   ```bash
+   # Install nvm for the deployment user
+   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+
+   # Reload shell or source nvm
+   source ~/.bashrc
+   ```
+	 OR alternatively edit the deploy.yml action script to use npm instead.
+3. Add the required secrets to your GitHub repository.
+4. Push to the `main` branch to trigger deployment.
 
 The workflow will automatically:
 - Use the correct Node.js version (via `.nvmrc`)
