@@ -1,6 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getDb } from '@/lib/server-db';
 
+// Define the club type to match the database schema
+interface GolfClub {
+  id: number;
+  name: string;
+  description: string | null;
+  icon: string | null;
+  createdAt: string | null;
+  isDefault: number; // SQLite stores booleans as integers (0 or 1)
+}
+
 // PUT /api/clubs/[id] - Update a club
 export async function PUT(
   request: NextRequest,
@@ -15,7 +25,7 @@ export async function PUT(
     const db = getDb();
 
     // Check if this is a seeded club using isDefault
-    const club = db.prepare('SELECT * FROM golfClubs WHERE id = ?').get(clubId);
+    const club = db.prepare('SELECT * FROM golfClubs WHERE id = ?').get(clubId) as GolfClub | undefined;
     if (club && club.isDefault) {
       return NextResponse.json({ error: 'Cannot edit default clubs' }, { status: 403 });
     }
@@ -43,7 +53,7 @@ export async function DELETE(
     const db = getDb();
 
     // Check if this is a seeded club using isDefault
-    const club = db.prepare('SELECT * FROM golfClubs WHERE id = ?').get(clubId);
+    const club = db.prepare('SELECT * FROM golfClubs WHERE id = ?').get(clubId) as GolfClub | undefined;
     if (club && club.isDefault) {
       return NextResponse.json({ error: 'Cannot delete default clubs' }, { status: 403 });
     }

@@ -12,11 +12,11 @@ export default function defaultPage() {
         <ul className="list-disc list-inside text-left text-base space-y-1">
           <li>Head to <span className="font-semibold">Golf Bags</span> to create your bag and fill it with clubs.</li>
           <li>Visit <span className="font-semibold">Golf Clubs</span> to add, edit, or admire your club collection.</li>
-          <li>When you're ready, go to <span className="font-semibold">Play</span> and let the caddie pick a club for you at random!</li>
+          <li>When you&apos;re ready, go to <span className="font-semibold">Play</span> and let the caddie pick a club for you at random!</li>
         </ul>
       </div>
       <p className="text-muted-foreground text-center text-sm max-w-md">
-        Pro tip: If you shank your shot, just blame the app. That's what it's here for!
+        Pro tip: If you shank your shot, just blame the app. That&apos;s what it&apos;s here for!
       </p>
 			<p className="pt-5 text-muted-foreground text-center text-sm max-w-md">
         Icons by <a href="https://www.flaticon.com/authors/iconixar" target="_blank">Iconixar</a>

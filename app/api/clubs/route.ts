@@ -61,8 +61,8 @@ export async function DELETE() {
     const db = getDb();
 
     // Get all custom clubs (isDefault = 0)
-    const customClubs = db.prepare('SELECT id FROM golfClubs WHERE isDefault = 0').all();
-    const customClubIds = customClubs.map((club: any) => club.id);
+    const customClubs = db.prepare('SELECT id FROM golfClubs WHERE isDefault = 0').all() as { id: number }[];
+    const customClubIds = customClubs.map((club) => club.id);
 
     if (customClubIds.length > 0) {
       // Delete club relations for custom clubs first (foreign key constraint)
