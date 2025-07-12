@@ -152,6 +152,29 @@ The app is ready for deployment on any Node.js hosting platform:
 
 The SQLite database will be created automatically in the `data/` directory and will persist across deployments.
 
+## GitHub Actions: Automated Deployment
+
+This project includes a GitHub Actions workflow for automated deployment to a remote server (e.g., a VPS or cloud droplet).
+
+### How it works
+- On every push to the `main` branch, the workflow connects to your server via SSH, pulls the latest code, installs dependencies, runs the setup script, builds the app, and (re)starts the Next.js app using pm2.
+
+### Required Secrets
+Set these repository secrets in **Settings > Secrets and variables > Actions**:
+- `USER`: SSH username for your server
+- `HOST`: Hostname or IP address of your server
+- `APP_PATH`: Absolute path to your app directory on the server (e.g., `/home/youruser/random-club-challenge`)
+- `SSH_PRIVATE_KEY`: Private SSH key with access to the server
+
+### How to use
+1. Set up your server with Node.js, pm2, and SSH access.
+2. Add the required secrets to your GitHub repository.
+3. Push to the `main` branch to trigger deployment.
+
+The workflow will automatically build and (re)start your app as a pm2 process named `nextjs-app`.
+
+> **Tip:** You can customize the workflow in `.github/workflows/deploy.yml` for your environment or process manager.
+
 ## Contributing
 
 1. Fork the repository
