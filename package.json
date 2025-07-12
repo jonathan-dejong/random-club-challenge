@@ -7,7 +7,16 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "setup": "node scripts/setup.js"
+    "setup": "node scripts/setup.js",
+    "pm2:start": "pm2 start npm --name 'nextjs-app' -- start",
+    "pm2:stop": "pm2 stop nextjs-app",
+    "pm2:restart": "pm2 restart nextjs-app",
+    "pm2:delete": "pm2 delete nextjs-app",
+    "pm2:logs": "pm2 logs nextjs-app",
+    "pm2:status": "pm2 status",
+    "pm2:monit": "pm2 monit",
+    "pm2:reload": "pm2 reload nextjs-app",
+    "deploy": "npm run build && npm run pm2:restart"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.11",
