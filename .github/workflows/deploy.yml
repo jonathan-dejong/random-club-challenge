@@ -23,9 +23,6 @@ jobs:
           ssh -o StrictHostKeyChecking=no ${{ secrets.USER }}@${{ secrets.HOST }} "
             cd ${{ secrets.APP_PATH }} &&
             git pull &&
-            export NVM_DIR="$HOME/.nvm"
-            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-            nvm use &&
             npm install &&
             npm run setup &&
             npm run deploy

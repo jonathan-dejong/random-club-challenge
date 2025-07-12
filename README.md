@@ -226,6 +226,8 @@ The workflow will automatically:
 - Build the application
 - Deploy using the new `npm run deploy` script
 
+If you want to use nvm on your production server as well, just add it to the github action.
+
 The app will run as a PM2 process named `random-club-app`.
 
 > **Tip:** You can customize the workflow in `.github/workflows/deploy.yml` for your environment or process manager.
