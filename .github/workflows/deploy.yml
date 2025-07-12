@@ -23,8 +23,8 @@ jobs:
           ssh -o StrictHostKeyChecking=no ${{ secrets.USER }}@${{ secrets.HOST }} "
             cd ${{ secrets.APP_PATH }} &&
             git pull &&
+            nvm use &&
             npm install &&
             npm run setup &&
-            npm run build &&
-            pm2 restart nextjs-app || pm2 start npm --name "nextjs-app" -- run start
+            npm run deploy
           "

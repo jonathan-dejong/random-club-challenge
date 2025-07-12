@@ -21,7 +21,8 @@ A modern golf club challenge app where users can manage clubs, create bags, assi
 - **Animations**: tw-animate-css, view transitions API
 - **Database**: SQLite (server-side with better-sqlite3)
 - **Icons**: Lucide React, custom SVG icons
-- **Deployment**: Ready for server deployment
+- **Runtime**: Node.js 20.11.0 (LTS)
+- **Deployment**: Ready for server deployment with PM2 process management
 
 ## Pages & Navigation
 
@@ -93,6 +94,45 @@ npm run build
 
 # Start production server
 npm start
+```
+
+## PM2 Process Management
+
+The project includes convenient scripts for managing the production deployment:
+
+```bash
+# Start the app with PM2
+npm run pm2:start
+
+# Stop the PM2 process
+npm run pm2:stop
+
+# Restart the PM2 process
+npm run pm2:restart
+
+# View real-time logs
+npm run pm2:logs
+
+# Check process status
+npm run pm2:status
+
+# Monitor performance
+npm run pm2:monit
+
+# Full deployment (build + restart)
+npm run deploy
+```
+
+## Node.js Version
+
+This project uses Node.js 20.11.0 (LTS). The `.nvmrc` file ensures consistent Node.js versions across all environments.
+
+```bash
+# Use the project's Node.js version
+nvm use
+
+# Install the required Node.js version (if not already installed)
+nvm install
 ```
 
 ## API Endpoints
@@ -167,11 +207,17 @@ Set these repository secrets in **Settings > Secrets and variables > Actions**:
 - `SSH_PRIVATE_KEY`: Private SSH key with access to the server
 
 ### How to use
-1. Set up your server with Node.js, pm2, and SSH access.
+1. Set up your server with Node.js 20.11.0, pm2, and SSH access.
 2. Add the required secrets to your GitHub repository.
 3. Push to the `main` branch to trigger deployment.
 
-The workflow will automatically build and (re)start your app as a pm2 process named `nextjs-app`.
+The workflow will automatically:
+- Use the correct Node.js version (via `.nvmrc`)
+- Install dependencies and run setup
+- Build the application
+- Deploy using the new `npm run deploy` script
+
+The app will run as a PM2 process named `random-club-app`.
 
 > **Tip:** You can customize the workflow in `.github/workflows/deploy.yml` for your environment or process manager.
 
