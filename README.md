@@ -16,12 +16,12 @@ A modern golf club challenge app where users can manage clubs, create bags, assi
 
 ## Tech Stack
 
-- **Frontend**: Next.js 15, React 19, TypeScript
-- **Styling**: Tailwind CSS v4, shadcn/ui components
+- **Frontend**: Next.js, React, TypeScript
+- **Styling**: Tailwind CSS, shadcn/ui components
 - **Animations**: tw-animate-css, view transitions API
 - **Database**: SQLite (server-side with better-sqlite3)
 - **Icons**: Lucide React, custom SVG icons
-- **Runtime**: Node.js 20.11.0 (LTS)
+- **Runtime**: Node.js (LTS)
 - **Deployment**: Ready for server deployment with PM2 process management
 
 ## Pages & Navigation
