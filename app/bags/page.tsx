@@ -114,7 +114,7 @@ export default function BagsPage() {
   };
 
   return (
-    <div className="pt-5 pb-5 px-2 max-w-2xl mx-auto">
+    <main id="main-content" className="pt-5 pb-5 px-2 max-w-2xl mx-auto">
       <div className="text-center mb-8">
         <h2 className="text-3xl font-bold text-foreground mb-4">Golf bags</h2>
         <div className="flex justify-center">
@@ -134,7 +134,7 @@ export default function BagsPage() {
             <DialogTrigger asChild>
               <Button
                 variant="outline"
-                className="rounded-xl shadow-sm flex items-center gap-2 transition-transform hover:scale-105 active:scale-95"
+                className="rounded-xl shadow-sm flex items-center gap-2 transition-transform hover:scale-105 focus:scale-105 active:scale-95"
                 onClick={() => {
                   setEditBag(null);
                   setBagName("");
@@ -181,8 +181,8 @@ export default function BagsPage() {
                 </div>
               </div>
               <div className="flex gap-2 justify-end">
-                <Button type="button" variant="outline" onClick={() => setShowDialog(false)} className="transition-transform hover:scale-105 active:scale-95">Cancel</Button>
-                <Button type="button" onClick={handleDialogSave} className="transition-transform hover:scale-105 active:scale-95">{editBag ? "Save" : "Add"}</Button>
+                <Button type="button" variant="outline" onClick={() => setShowDialog(false)} className="transition-transform hover:scale-105 focus:scale-105 active:scale-95">Cancel</Button>
+                <Button type="button" onClick={handleDialogSave} className="transition-transform hover:scale-105 focus:scale-105 active:scale-95">{editBag ? "Save" : "Add"}</Button>
               </div>
             </DialogContent>
           </Dialog>
@@ -210,10 +210,10 @@ export default function BagsPage() {
                     <TableCell className="text-sm">{bag.description}</TableCell>
                     <TableCell className="text-sm">
                       <div className="flex gap-0">
-                        <Button variant="ghost" size="icon" onClick={() => handleEdit(bag)} aria-label="Edit" className="transition-transform hover:scale-105 active:scale-95">
+                        <Button variant="ghost" size="icon" onClick={() => handleEdit(bag)} aria-label="Edit" className="transition-transform hover:scale-105 focus:scale-105 active:scale-95">
                           <Pencil className="w-4 h-4" />
                         </Button>
-                        <Button variant="ghost" size="icon" onClick={() => handleDelete(bag)} aria-label="Delete" className="transition-transform hover:scale-105 active:scale-95">
+                        <Button variant="ghost" size="icon" onClick={() => handleDelete(bag)} aria-label="Delete" className="transition-transform hover:scale-105 focus:scale-105 active:scale-95">
                           <Trash2 className="w-4 h-4" />
                         </Button>
                       </div>
@@ -225,6 +225,6 @@ export default function BagsPage() {
           </div>
         )}
       </Card>
-    </div>
+    </main>
   );
 }

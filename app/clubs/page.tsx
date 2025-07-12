@@ -125,7 +125,7 @@ export default function ClubsPage() {
   const customClubsCount = clubs.filter(club => !isSeededClub(club)).length;
 
   return (
-    <div className="pt-5 pb-5 px-2 max-w-2xl mx-auto">
+    <main id="main-content" className="pt-5 pb-5 px-2 max-w-2xl mx-auto">
       <div className="text-center mb-8">
         <h2 className="text-3xl font-bold text-foreground mb-4">Golf clubs</h2>
         <div className="flex sm:flex-row justify-center items-center gap-2">
@@ -141,7 +141,7 @@ export default function ClubsPage() {
             <DialogTrigger asChild>
               <Button
                 variant="outline"
-                className="rounded-xl shadow-sm flex items-center gap-2 transition-transform hover:scale-105 active:scale-95 whitespace-nowrap"
+                className="rounded-xl shadow-sm flex items-center gap-2 transition-transform hover:scale-105 focus:scale-105 active:scale-95 whitespace-nowrap"
                 onClick={resetDialog}
               >
                 <span className="text-xl">+</span> Add Club
@@ -177,8 +177,8 @@ export default function ClubsPage() {
                 </select>
               </div>
               <div className="flex gap-2 justify-end">
-                <Button type="button" variant="outline" onClick={() => setShowDialog(false)} className="transition-transform hover:scale-105 active:scale-95">Cancel</Button>
-                <Button type="button" onClick={handleDialogSave} className="transition-transform hover:scale-105 active:scale-95">{editClub ? "Save" : "Add"}</Button>
+                <Button type="button" variant="outline" onClick={() => setShowDialog(false)} className="transition-transform hover:scale-105 focus:scale-105 active:scale-95">Cancel</Button>
+                <Button type="button" onClick={handleDialogSave} className="transition-transform hover:scale-105 focus:scale-105 active:scale-95">{editClub ? "Save" : "Add"}</Button>
               </div>
             </DialogContent>
           </Dialog>
@@ -187,7 +187,7 @@ export default function ClubsPage() {
             <DialogTrigger asChild>
               <Button
                 variant="destructive"
-                className="rounded-xl shadow-sm flex items-center gap-2 transition-transform hover:scale-105 active:scale-95 whitespace-nowrap"
+                className="rounded-xl shadow-sm flex items-center gap-2 transition-transform hover:scale-105 focus:scale-105 active:scale-95 whitespace-nowrap"
                 disabled={customClubsCount === 0}
               >
                 <AlertTriangle className="w-4 h-4" />
@@ -205,8 +205,8 @@ export default function ClubsPage() {
                 <strong>Warning:</strong> This will also remove custom clubs from all golf bags.
               </DialogDescription>
               <div className="flex gap-2 justify-end">
-                <Button type="button" variant="outline" onClick={() => setShowClearDialog(false)} className="transition-transform hover:scale-105 active:scale-95">Cancel</Button>
-                <Button type="button" variant="destructive" onClick={handleClearCustom} className="transition-transform hover:scale-105 active:scale-95">Delete Custom Clubs</Button>
+                <Button type="button" variant="outline" onClick={() => setShowClearDialog(false)} className="transition-transform hover:scale-105 focus:scale-105 active:scale-95">Cancel</Button>
+                <Button type="button" variant="destructive" onClick={handleClearCustom} className="transition-transform hover:scale-105 focus:scale-105 active:scale-95">Delete Custom Clubs</Button>
               </div>
             </DialogContent>
           </Dialog>
@@ -259,7 +259,7 @@ export default function ClubsPage() {
                             size="icon"
                             onClick={() => handleEdit(club)}
                             aria-label="Edit"
-                            className={`transition-transform hover:scale-105 active:scale-95 ${isSeeded ? 'opacity-50 cursor-not-allowed' : ''}`}
+                            className={`transition-transform hover:scale-105 focus:scale-105 active:scale-95 ${isSeeded ? 'opacity-50 cursor-not-allowed' : ''}`}
                             disabled={isSeeded}
                           >
                             <Pencil className="w-4 h-4" />
@@ -269,7 +269,7 @@ export default function ClubsPage() {
                             size="icon"
                             onClick={() => handleDelete(club)}
                             aria-label="Delete"
-                            className={`transition-transform hover:scale-105 active:scale-95 ${isSeeded ? 'opacity-50 cursor-not-allowed' : ''}`}
+                            className={`transition-transform hover:scale-105 focus:scale-105 active:scale-95 ${isSeeded ? 'opacity-50 cursor-not-allowed' : ''}`}
                             disabled={isSeeded}
                           >
                             <Trash2 className="w-4 h-4" />
@@ -284,6 +284,6 @@ export default function ClubsPage() {
           </div>
         )}
       </Card>
-    </div>
+    </main>
   );
 }
