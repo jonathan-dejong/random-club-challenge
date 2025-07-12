@@ -1,6 +1,7 @@
 import initWasm from '@vlcn.io/crsqlite-wasm';
 
-let dbInstance: any = null;
+// The type for the DB instance is unknown due to lack of types in @vlcn.io/crsqlite-wasm
+let dbInstance: unknown = null;
 
 // Schema SQL
 const schemaSQL = `
@@ -29,15 +30,20 @@ CREATE TABLE IF NOT EXISTS golfClubRelations (
 );
 `;
 
+type DBWithExec = {
+  exec: (sql: string, params?: unknown[]) => Promise<{ rows: unknown[] }>;
+  execO: <T = unknown>(sql: string, params?: unknown[]) => Promise<T[]>;
+};
+
 export async function getDb() {
-  if (dbInstance) return dbInstance;
+  if (dbInstance) return dbInstance as unknown as DBWithExec;
   const sqlite3 = await initWasm();
-  dbInstance = await sqlite3.open();
+  dbInstance = await sqlite3.open('random-club-challenge.db');
   // Run schema setup
   for (const stmt of schemaSQL.split(';')) {
-    if (stmt.trim()) await dbInstance.exec(stmt);
+    if (stmt.trim()) await (dbInstance as unknown as DBWithExec).exec(stmt);
   }
-  return dbInstance;
+  return dbInstance as unknown as DBWithExec;
 }
 
 // Example: List all bags

@@ -39,3 +39,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# database
+/data
+
+# SQLite database (working copy, ignored)
+data/
+database.sqlite
+
+# Allow template and seed files
+!database.template.sqlite
+!seed.sql
