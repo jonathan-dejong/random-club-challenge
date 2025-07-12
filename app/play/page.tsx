@@ -81,7 +81,7 @@ export default function PlayPage() {
   return (
     <main id="main-content" className="pt-5 pb-5 px-2 max-w-2xl mx-auto">
 			<div className="text-center mb-8">
-				<h2 className="text-3xl font-bold text-foreground mb-4">Let's play!</h2>
+				<h2 className="text-3xl font-bold text-foreground mb-4">Let&apos;s play!</h2>
 				<div className="flex flex-col sm:flex-row justify-center items-center gap-0">
 					<div className="flex items-center">
 						<label className="block text-foreground font-bold mb-0 mr-2">Using Bag:</label>
